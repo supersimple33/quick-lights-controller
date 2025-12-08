@@ -4,11 +4,25 @@ import termios
 import tty
 from contextlib import contextmanager
 
-MAP: dict[str, str] = {"a": "aa", "b": "bb", "c": "cc"}
+from PyDMXControl.controllers import OpenDMXController
+
+from basic import RGBWFixture
+
+dmx = OpenDMXController()
+rgbw = RGBWFixture(dmx, start_channel=1)
+dmx.web_control()
+
+MAP: dict[str, tuple[int, int, int, int]] = {
+    "r": (255, 0, 0, 0),
+    "g": (0, 255, 0, 0),
+    "b": (0, 0, 255, 0),
+    "w": (0, 0, 0, 255),
+}
 
 
-def stuff(value: str) -> None:
-    print(f"stuff({value})")
+def stuff(color: tuple[int, int, int, int]) -> None:
+    rgbw.set_rgbw(*color)
+    print(f"Set color to R:{color[0]} G:{color[1]} B:{color[2]} W:{color[3]}")
 
 
 @contextmanager
