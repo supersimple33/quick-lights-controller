@@ -2,9 +2,6 @@ from PyDMXControl.controllers import OpenDMXController
 from PyDMXControl.profiles.Generic import Custom
 
 
-dmx = OpenDMXController()
-
-
 class RGBWFixture:
     """
     Generic 4-channel RGBW fixture:
@@ -40,13 +37,16 @@ class RGBWFixture:
         self.set_rgbw(r, g, b, w, fade_ms)
 
 
-# Example usage: fixture starting at DMX address 1
-rgbw = RGBWFixture(dmx, start_channel=1)
+if __name__ == "__main__":
+    # Example usage:
+    dmx = OpenDMXController()
+    # Example usage: fixture starting at DMX address 1
+    rgbw = RGBWFixture(dmx, start_channel=1)
 
-# r g b w
-rgbw.set_rgbw(0, 0, 0, 255)
+    # r g b w
+    rgbw.set_rgbw(0, 0, 0, 255)
 
-# …keep the program alive so the DMX thread keeps running:
-# dmx.web_control()
-dmx.sleep_till_enter()
-dmx.close()
+    # …keep the program alive so the DMX thread keeps running:
+    # dmx.web_control()
+    dmx.sleep_till_enter()
+    dmx.close()
