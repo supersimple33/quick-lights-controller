@@ -6,5 +6,5 @@ readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "flask<3",
-    "pydmxcontrol[audio]>=2.0.0",
+    "pydmxcontrol[audio] @ git+https://github.com/MattIPv4/PyDMXControl@master",
 ]
