@@ -158,15 +158,11 @@ name = "quick-lights-controller"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
-    { name = "flask" },
     { name = "pydmxcontrol", extra = ["audio"] },
 ]
 
 [package.metadata]
-requires-dist = [
-    { name = "flask", specifier = "<3" },
-    { name = "pydmxcontrol", extras = ["audio"], git = "https://github.com/MattIPv4/PyDMXControl?rev=master" },
-]
+requires-dist = [{ name = "pydmxcontrol", extras = ["audio"], git = "https://github.com/MattIPv4/PyDMXControl?rev=master" }]
 
 [[package]]
 name = "udmx-pyusb"
